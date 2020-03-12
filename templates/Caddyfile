@@ -1,0 +1,3 @@
+{{{host}}}.{{{domain}}}
+
+reverse_proxy localhost:{{{remote_port}}}
