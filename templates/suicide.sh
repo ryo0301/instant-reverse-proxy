@@ -1,6 +1,7 @@
 #!/bin/bash
 
 timer={{{timer}}}
+(( timer == 0 )) && exit
 
 ssh_estab=$(ss -H -o state established '( dport = :ssh or sport = :ssh )' | grep ssh | wc -l)
 
