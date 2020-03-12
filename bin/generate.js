@@ -10,6 +10,8 @@ const domain = process.env.HOSTED_ZONE_DOMAIN;
 const caddy_url = process.env.CADDY_DL_URL;
 const timer = process.env.SHUTDOWN_TIMER_HOUR;
 const remote_port = process.env.UPSTREAM_PORT;
+const locale = process.env.LOCALE;
+const timezone = process.env.TIMEZONE;
 
 const files_meta = [
   {
@@ -74,8 +76,8 @@ const files_meta = [
 
 const cc = {
   repo_upgrade: 'all',
-  locale: 'ja_JP.UTF-8',
-  timezone: 'Asia/Tokyo',
+  locale: locale,
+  timezone: timezone,
   write_files: [],
 };
 
