@@ -7,7 +7,7 @@
   * `route53:ChangeResourceRecordSets` action
   * `route53:ListHostedZonesByName` action
 * Security Group
-  * 443 port/Outbound
+  * 443 port/Inbound
 * RSA Key Pair
 * (Optional) EC2 Launch Template
 
