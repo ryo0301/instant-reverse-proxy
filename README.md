@@ -4,7 +4,6 @@
 
 * Route53 Hosted Zone
 * IAM Role
-  * `AmazonSSMManagedInstanceCore` policy
   * `route53:ChangeResourceRecordSets` action
   * `route53:ListHostedZonesByName` action
 * Security Group
