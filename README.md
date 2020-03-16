@@ -1,5 +1,9 @@
 # instant-reverse-proxy
 
+Automatic HTTPS by Caddy2. \
+Automatic registration to Route53. \
+Stop at specified time after ssh session is disconnected.
+
 ## Prerequisites
 
 * Route53 Hosted Zone
@@ -8,7 +12,7 @@
   * `route53:ListHostedZonesByName` action
 * Security Group
   * 443 port/Inbound
-* RSA Key Pair
+* RSA Key Pair for remote port forwarding
 * (Optional) EC2 Launch Template
 
 ## Run
@@ -25,4 +29,27 @@ LOCALE=ja_JP.UTF-8
 TIMEZONE=Asia/Tokyo
 EOF
 $ npm run generate -s 2> /dev/null | aws ec2 run-instances --launch-template LaunchTemplateName=reverse-proxy --user-data file:///dev/stdin
+```
+
+## Connect
+
+When using SessionManager
+```
+$ cat <<EOF >> ~/.ssh/config
+Host i-* mi-*
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
+EOF
+```
+
+Generate Key pair and Send public key.
+```
+$ ssh-keygen -t rsa -b 4096
+$ aws ec2-instance-connect send-ssh-public-key --instance-id i-XXXXXX --instance-os-user ec2-user --availability-zone ap-northeast-1a --ssh-public-key file:///$HOME/.ssh/id_rsa.pub
+```
+
+Remote port forwarding.
+```
+$ ssh -i ~/.ssh/id_rsa -l ec2-user i-XXXXXX -N -R 3000:localhost:3000
 ```
