@@ -22,7 +22,7 @@ $ git clone https://github.com/ryo0301/instant-reverse-proxy
 $ cat <<EOF > .env
 HOST_NAME=my
 HOSTED_ZONE_DOMAIN=proxy.example.com
-CADDY_DL_URL=https://github.com/caddyserver/caddy/releases/download/v2.0.0-beta.15/caddy2_beta15_linux_amd64
+CADDY_DL_URL=https://github.com/caddyserver/caddy/releases/download/v2.0.0/caddy_2.0.0_linux_amd64.tar.gz
 SHUTDOWN_TIMER_HOUR=1
 UPSTREAM_PORT=3000
 LOCALE=ja_JP.UTF-8

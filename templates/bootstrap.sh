@@ -5,7 +5,9 @@ readonly DOMAIN="{{{domain}}}"
 readonly CADDY_URL="{{{caddy_url}}}"
 
 echo "$(date):per-instance:caddy:install:start"
-sudo curl -SsL "$CADDY_URL" -o /usr/bin/caddy
+sudo curl -SsL "$CADDY_URL" -o /tmp/caddy.tar.gz
+sudo tar zxf /tmp/caddy.tar.gz
+sudo mv /tmp/caddy /usr/bin/caddy
 sudo chmod 755 /usr/bin/caddy
 
 sudo groupadd caddy --system
