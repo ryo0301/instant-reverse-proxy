@@ -6,7 +6,7 @@ readonly CADDY_URL="{{{caddy_url}}}"
 
 echo "$(date):per-instance:caddy:install:start"
 sudo curl -SsL "$CADDY_URL" -o /tmp/caddy.tar.gz
-sudo tar zxf /tmp/caddy.tar.gz
+sudo tar zxf /tmp/caddy.tar.gz -C /tmp
 sudo mv /tmp/caddy /usr/bin/caddy
 sudo chmod 755 /usr/bin/caddy
 
